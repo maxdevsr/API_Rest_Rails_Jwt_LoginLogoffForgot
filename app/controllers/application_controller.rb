@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
   protected
 
-   importante: aqui voce pode editar todas as entradas padrao do devise create user
+  #importante: aqui voce pode editar todas as entradas padrao do devise create user
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name nickname])
     added_attrs = [:name, :email, :password, :password_confirmation]
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
   end
 
   def show_not_found_errors(exception)
-    render json: { error: " {exception.message} with 'id'= {params[:id]}" },
+    render json: { error: "#{exception.message} with 'id'=#{params[:id]}" },
            status: :not_found
   end
 end

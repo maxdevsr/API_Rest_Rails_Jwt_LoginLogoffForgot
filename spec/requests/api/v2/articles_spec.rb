@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-  rubocop: disable Metrics/BlockLength
+# rubocop: disable Metrics/BlockLength
 RSpec.describe '/articles', type: :request do
   let(:user) { create :user }
   let(:article) { create :article, user: user }

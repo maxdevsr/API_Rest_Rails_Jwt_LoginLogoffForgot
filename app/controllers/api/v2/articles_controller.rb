@@ -4,7 +4,7 @@ class Api::V2::ArticlesController < ApplicationController
   before_action :authenticate_api_user!, except: [:index]
   before_action :set_article, only: %i[show update destroy]
 
-    GET /articles
+  # GET /articles
   def index
     @articles = Article.includes(:user)
                        .sorted(params[:sort], params[:dir])
@@ -14,12 +14,12 @@ class Api::V2::ArticlesController < ApplicationController
     render json: @articles, meta: meta_attributes(@articles), adapter: :json
   end
 
-    GET /articles/1
+  # GET /articles/1
   def show
     render json: @article
   end
 
-    POST /articles
+  # POST /articles
   def create
     @article = current_api_user.articles.new(article_params)
 
@@ -30,7 +30,7 @@ class Api::V2::ArticlesController < ApplicationController
     end
   end
 
-    PATCH/PUT /articles/1
+  # PATCH/PUT /articles/1
   def update
     if @article.update(article_params)
       render json: @article
@@ -39,19 +39,19 @@ class Api::V2::ArticlesController < ApplicationController
     end
   end
 
-    DELETE /articles/1
+  # DELETE /articles/1
   def destroy
     @article.destroy
   end
 
   private
 
-    Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_article
     @article = current_api_user.articles.find_by_id!(params[:id])
   end
 
-    Only allow a list of trusted parameters through.
+  # Only allow a list of trusted parameters through.
   def article_params
     params.require(:article).permit(:title, :body)
   end
