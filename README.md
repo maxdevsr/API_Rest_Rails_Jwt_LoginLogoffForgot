@@ -48,3 +48,8 @@ bundle exec rspec
 ```
 ## Documentation
 
+Para usar com exito, faz parte voce criar uma nova master key.
+apague o arquivo credentials.yml.enc em config
+abra o terminal e digite, caso esteja usando vs code
+EDITOR="code --wait" rails credentials:edit
+
