@@ -8,7 +8,7 @@ module Sortable
       if respond_to?(:sort_by, true)
         column = column(sort)
         direction = direction(dir)
-        order("#{column} #{direction}")
+        order(" {column}  {direction}")
       else
         all
       end
